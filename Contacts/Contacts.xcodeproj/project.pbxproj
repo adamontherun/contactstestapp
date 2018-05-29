@@ -18,6 +18,7 @@
 		66D726FA20BD351A004372CD /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726F920BD351A004372CD /* CoreDataController.swift */; };
 		66D726FC20BD39CA004372CD /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726FB20BD39CA004372CD /* ContactsTableViewController.swift */; };
 		66D726FE20BD3A23004372CD /* ContactsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726FD20BD3A23004372CD /* ContactsStore.swift */; };
+		66D7270020BDD6B1004372CD /* FirstUsageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726FF20BDD6B1004372CD /* FirstUsageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		66D726F920BD351A004372CD /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		66D726FB20BD39CA004372CD /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		66D726FD20BD3A23004372CD /* ContactsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsStore.swift; sourceTree = "<group>"; };
+		66D726FF20BDD6B1004372CD /* FirstUsageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstUsageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				66D726CA20BD2F81004372CD /* AppDelegate.swift */,
 				66D726D620BD2F82004372CD /* Info.plist */,
+				66D726FF20BDD6B1004372CD /* FirstUsageManager.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				66D726FA20BD351A004372CD /* CoreDataController.swift in Sources */,
 				66D726CB20BD2F81004372CD /* AppDelegate.swift in Sources */,
 				66D726EE20BD3094004372CD /* Model.xcdatamodeld in Sources */,
+				66D7270020BDD6B1004372CD /* FirstUsageManager.swift in Sources */,
 				66D726FE20BD3A23004372CD /* ContactsStore.swift in Sources */,
 				66D726F720BD33A4004372CD /* Contact+CoreDataClass.swift in Sources */,
 				66D726FC20BD39CA004372CD /* ContactsTableViewController.swift in Sources */,
