@@ -19,6 +19,9 @@
 		66D726FC20BD39CA004372CD /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726FB20BD39CA004372CD /* ContactsTableViewController.swift */; };
 		66D726FE20BD3A23004372CD /* ContactsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726FD20BD3A23004372CD /* ContactsStore.swift */; };
 		66D7270020BDD6B1004372CD /* FirstUsageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726FF20BDD6B1004372CD /* FirstUsageManager.swift */; };
+		66D7270220BDDAE2004372CD /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = 66D7270120BDDAE2004372CD /* contacts.json */; };
+		66D7270420BDDDDF004372CD /* JSONFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7270320BDDDDF004372CD /* JSONFetcher.swift */; };
+		66D7270820BE025A004372CD /* NSNotifiation.Name+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7270720BE025A004372CD /* NSNotifiation.Name+Custom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 		66D726FB20BD39CA004372CD /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		66D726FD20BD3A23004372CD /* ContactsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsStore.swift; sourceTree = "<group>"; };
 		66D726FF20BDD6B1004372CD /* FirstUsageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstUsageManager.swift; sourceTree = "<group>"; };
+		66D7270120BDDAE2004372CD /* contacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contacts.json; sourceTree = "<group>"; };
+		66D7270320BDDDDF004372CD /* JSONFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFetcher.swift; sourceTree = "<group>"; };
+		66D7270720BE025A004372CD /* NSNotifiation.Name+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotifiation.Name+Custom.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,9 +125,12 @@
 		66D726EB20BD307F004372CD /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				66D7270120BDDAE2004372CD /* contacts.json */,
 				66D726CA20BD2F81004372CD /* AppDelegate.swift */,
 				66D726D620BD2F82004372CD /* Info.plist */,
 				66D726FF20BDD6B1004372CD /* FirstUsageManager.swift */,
+				66D7270320BDDDDF004372CD /* JSONFetcher.swift */,
+				66D7270720BE025A004372CD /* NSNotifiation.Name+Custom.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -227,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66D7270220BDDAE2004372CD /* contacts.json in Resources */,
 				66D726D520BD2F82004372CD /* LaunchScreen.storyboard in Resources */,
 				66D726D220BD2F81004372CD /* Assets.xcassets in Resources */,
 				66D726D020BD2F81004372CD /* Main.storyboard in Resources */,
@@ -253,7 +263,9 @@
 				66D726EE20BD3094004372CD /* Model.xcdatamodeld in Sources */,
 				66D7270020BDD6B1004372CD /* FirstUsageManager.swift in Sources */,
 				66D726FE20BD3A23004372CD /* ContactsStore.swift in Sources */,
+				66D7270420BDDDDF004372CD /* JSONFetcher.swift in Sources */,
 				66D726F720BD33A4004372CD /* Contact+CoreDataClass.swift in Sources */,
+				66D7270820BE025A004372CD /* NSNotifiation.Name+Custom.swift in Sources */,
 				66D726FC20BD39CA004372CD /* ContactsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

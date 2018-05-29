@@ -1,32 +1,40 @@
 import UIKit
 
-typealias ContactsStoreCompletionHandler = () -> ()
 
 class ContactsStore {
     
     private var coreDataController: CoreDataController!
-    private var contacts = [Contact]()
-    
-    var contactsCount: Int {
-        return contacts.count
-    }
+    var contacts = [Contact]()
+
     
     // MARK: - Initializers
     
-    init(completionHandler: @escaping ContactsStoreCompletionHandler) {
-        coreDataController = CoreDataController { [weak self] in
-            let isFirstUsage = FirstUsageManager.checkIfAppsFirstUse()
-            isFirstUsage ? self?.addInitialContacts() : self?.fetchContacts()
-            completionHandler()
-        }
+    init() {
+        coreDataController = CoreDataController(delegate: self)
     }
     
     private func addInitialContacts() {
-        
+        let json = JSONFetcher.fetchInitialContactsJSON()
+        coreDataController.createContacts(from: json)
+        FirstUsageManager.markAsUsed()
     }
     
-    private func fetchContacts() {
-        
+    func fetchContacts() {
+        coreDataController.initializeFetchedResultsController()
     }
+}
+
+extension ContactsStore: CoreDataControllerDelegate {
+    func coreDataControllerDidInitializeStores(_ controller: CoreDataController) {
+        let isFirstUsage = FirstUsageManager.checkIfAppsFirstUse()
+        if isFirstUsage { addInitialContacts() }
+    }
+    
+    func coreDataControllerDidFetchContacts(_ controller: CoreDataController) {
+        guard let fetchedContacts = coreDataController.fetchedResultsController?.fetchedObjects else { return }
+        contacts = fetchedContacts
+        NotificationCenter.default.post(name: .contactsFetched, object: nil)
+    }
+    
     
 }
