@@ -22,6 +22,7 @@
 		66D7270220BDDAE2004372CD /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = 66D7270120BDDAE2004372CD /* contacts.json */; };
 		66D7270420BDDDDF004372CD /* JSONFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7270320BDDDDF004372CD /* JSONFetcher.swift */; };
 		66D7270820BE025A004372CD /* NSNotifiation.Name+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7270720BE025A004372CD /* NSNotifiation.Name+Custom.swift */; };
+		66D7270A20BE0A2A004372CD /* ContactsTableViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7270920BE0A2A004372CD /* ContactsTableViewControllerDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		66D7270120BDDAE2004372CD /* contacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contacts.json; sourceTree = "<group>"; };
 		66D7270320BDDDDF004372CD /* JSONFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFetcher.swift; sourceTree = "<group>"; };
 		66D7270720BE025A004372CD /* NSNotifiation.Name+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotifiation.Name+Custom.swift"; sourceTree = "<group>"; };
+		66D7270920BE0A2A004372CD /* ContactsTableViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewControllerDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				66D726D120BD2F81004372CD /* Assets.xcassets */,
 				66D726D320BD2F82004372CD /* LaunchScreen.storyboard */,
 				66D726FB20BD39CA004372CD /* ContactsTableViewController.swift */,
+				66D7270920BE0A2A004372CD /* ContactsTableViewControllerDataSource.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				66D726FA20BD351A004372CD /* CoreDataController.swift in Sources */,
 				66D726CB20BD2F81004372CD /* AppDelegate.swift in Sources */,
 				66D726EE20BD3094004372CD /* Model.xcdatamodeld in Sources */,
+				66D7270A20BE0A2A004372CD /* ContactsTableViewControllerDataSource.swift in Sources */,
 				66D7270020BDD6B1004372CD /* FirstUsageManager.swift in Sources */,
 				66D726FE20BD3A23004372CD /* ContactsStore.swift in Sources */,
 				66D7270420BDDDDF004372CD /* JSONFetcher.swift in Sources */,

@@ -3,27 +3,24 @@ import UIKit
 class ContactsTableViewController: UITableViewController {
     
     private let contactsStore = ContactsStore()
+    private lazy var contactsTableViewControllerDataSource: ContactsTableViewControllerDataSource =  {
+       return ContactsTableViewControllerDataSource(contactsStore)
+    }()
     
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTableView()
         addObservers()
         contactsStore.fetchContacts()
     }
-
-    // MARK: - Table view data source
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactsStore.contacts.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
-        
-        let contact = contactsStore.contacts[indexPath.row]
-        cell.textLabel?.text = contact.firstName
-        return cell
+    
+    // MARK: - UI Configuration
+    
+    private func configureTableView() {
+        tableView.dataSource = contactsTableViewControllerDataSource
+        tableView.tableFooterView = UIView()
     }
  
     // MARK: - Observers
