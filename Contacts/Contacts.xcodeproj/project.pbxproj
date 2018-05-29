@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		66D726CB20BD2F81004372CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726CA20BD2F81004372CD /* AppDelegate.swift */; };
-		66D726CD20BD2F81004372CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726CC20BD2F81004372CD /* ViewController.swift */; };
 		66D726D020BD2F81004372CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D726CE20BD2F81004372CD /* Main.storyboard */; };
 		66D726D220BD2F81004372CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66D726D120BD2F81004372CD /* Assets.xcassets */; };
 		66D726D520BD2F82004372CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D726D320BD2F82004372CD /* LaunchScreen.storyboard */; };
@@ -16,6 +15,9 @@
 		66D726EE20BD3094004372CD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66D726EC20BD3094004372CD /* Model.xcdatamodeld */; };
 		66D726F620BD33A4004372CD /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726F420BD33A3004372CD /* Contact+CoreDataProperties.swift */; };
 		66D726F720BD33A4004372CD /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726F520BD33A4004372CD /* Contact+CoreDataClass.swift */; };
+		66D726FA20BD351A004372CD /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726F920BD351A004372CD /* CoreDataController.swift */; };
+		66D726FC20BD39CA004372CD /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726FB20BD39CA004372CD /* ContactsTableViewController.swift */; };
+		66D726FE20BD3A23004372CD /* ContactsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726FD20BD3A23004372CD /* ContactsStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +33,6 @@
 /* Begin PBXFileReference section */
 		66D726C720BD2F81004372CD /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66D726CA20BD2F81004372CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		66D726CC20BD2F81004372CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		66D726CF20BD2F81004372CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		66D726D120BD2F81004372CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66D726D420BD2F82004372CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -42,6 +43,9 @@
 		66D726ED20BD3094004372CD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		66D726F420BD33A3004372CD /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		66D726F520BD33A4004372CD /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
+		66D726F920BD351A004372CD /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		66D726FB20BD39CA004372CD /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		66D726FD20BD3A23004372CD /* ContactsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +106,10 @@
 		66D726EA20BD3067004372CD /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				66D726CC20BD2F81004372CD /* ViewController.swift */,
 				66D726CE20BD2F81004372CD /* Main.storyboard */,
 				66D726D120BD2F81004372CD /* Assets.xcassets */,
 				66D726D320BD2F82004372CD /* LaunchScreen.storyboard */,
+				66D726FB20BD39CA004372CD /* ContactsTableViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -124,6 +128,8 @@
 			children = (
 				66D726F820BD3414004372CD /* Contacts */,
 				66D726EC20BD3094004372CD /* Model.xcdatamodeld */,
+				66D726F920BD351A004372CD /* CoreDataController.swift */,
+				66D726FD20BD3A23004372CD /* ContactsStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,10 +245,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				66D726F620BD33A4004372CD /* Contact+CoreDataProperties.swift in Sources */,
-				66D726CD20BD2F81004372CD /* ViewController.swift in Sources */,
+				66D726FA20BD351A004372CD /* CoreDataController.swift in Sources */,
 				66D726CB20BD2F81004372CD /* AppDelegate.swift in Sources */,
 				66D726EE20BD3094004372CD /* Model.xcdatamodeld in Sources */,
+				66D726FE20BD3A23004372CD /* ContactsStore.swift in Sources */,
 				66D726F720BD33A4004372CD /* Contact+CoreDataClass.swift in Sources */,
+				66D726FC20BD39CA004372CD /* ContactsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
