@@ -87,7 +87,7 @@ class CoreDataController: NSObject {
 extension CoreDataController: NSFetchedResultsControllerDelegate {
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        print(controller.fetchedObjects)
+        print(controller.fetchedObjects ?? "NA")
     }
 
 }

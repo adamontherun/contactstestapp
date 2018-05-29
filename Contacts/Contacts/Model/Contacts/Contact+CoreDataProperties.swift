@@ -1,6 +1,3 @@
-//😘 it is 5/28/18
-//
-
 import Foundation
 import CoreData
 
@@ -11,7 +8,7 @@ extension Contact {
         return NSFetchRequest<Contact>(entityName: "Contact")
     }
 
-    @NSManaged public var contactID: String?
+    @NSManaged public var contactID: String
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
     @NSManaged public var phoneNumber: String?

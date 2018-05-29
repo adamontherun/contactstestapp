@@ -17,7 +17,7 @@ class ContactsTableViewControllerDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
         let contact = contactsStore.contacts[indexPath.row]
-        cell.textLabel?.text = contact.firstName
+        cell.textLabel?.text = contact.displayName
         return cell
     }
 }
