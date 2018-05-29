@@ -4,6 +4,7 @@ import CoreData
 typealias CoreDataControllerCompletionHandler = () -> ()
 
 class CoreDataController: NSObject {
+    
     let managedObjectContext: NSManagedObjectContext
     
     init(completionHandler: @escaping CoreDataControllerCompletionHandler) {
@@ -13,9 +14,7 @@ class CoreDataController: NSObject {
             if let error = error {
                 fatalError("Failed to load Core Data stack: \(error)")
             }
-            DispatchQueue.main.async {
-                completionHandler()
-            }
+            DispatchQueue.main.async { completionHandler() }
         }
         super.init()
     }

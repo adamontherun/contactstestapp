@@ -1,0 +1,112 @@
+[
+  {
+    "contactID": "5b0d0ea4221759d36b375a5c",
+    "city": "Camas",
+    "firstName": "Sharpe",
+    "lastName": "Benton",
+    "phoneNumber": "(945) 536-2132",
+    "state": "Georgia",
+    "streetAddress1": "Schenck Avenue",
+    "streetAddress2": "Apt 1",
+    "zipcode": "90210"
+  },
+  {
+    "contactID": "5b0d0ea406d73e3d345ff585",
+    "city": "Sehili",
+    "firstName": "Hodges",
+    "lastName": "Underwood",
+    "phoneNumber": "(883) 423-2942",
+    "state": "Marshall Islands",
+    "streetAddress1": "Channel Avenue",
+    "streetAddress2": "Apt 1",
+    "zipcode": "90210"
+  },
+  {
+    "contactID": "5b0d0ea450041b86dd3eaa35",
+    "city": "Linganore",
+    "firstName": "Sherri",
+    "lastName": "Noble",
+    "phoneNumber": "(800) 432-2982",
+    "state": "Missouri",
+    "streetAddress1": "Portal Street",
+    "streetAddress2": "Apt 1",
+    "zipcode": "90210"
+  },
+  {
+    "contactID": "5b0d0ea4d7e01ba9d3e1e3c4",
+    "city": "Gardiner",
+    "firstName": "Vonda",
+    "lastName": "Pearson",
+    "phoneNumber": "(846) 544-3620",
+    "state": "Wyoming",
+    "streetAddress1": "Willow Street",
+    "streetAddress2": "Apt 1",
+    "zipcode": "90210"
+  },
+  {
+    "contactID": "5b0d0ea489ecf47b4cee0772",
+    "city": "Starks",
+    "firstName": "Sloan",
+    "lastName": "Waller",
+    "phoneNumber": "(973) 431-2331",
+    "state": "District Of Columbia",
+    "streetAddress1": "Douglass Street",
+    "streetAddress2": "Apt 1",
+    "zipcode": "90210"
+  },
+  {
+    "contactID": "5b0d0ea41e1a507fb33b70f4",
+    "city": "Jacksonwald",
+    "firstName": "Patsy",
+    "lastName": "Nicholson",
+    "phoneNumber": "(858) 544-2114",
+    "state": "Maryland",
+    "streetAddress1": "Hart Street",
+    "streetAddress2": "Apt 1",
+    "zipcode": "90210"
+  },
+  {
+    "contactID": "5b0d0ea43584e6ed09492267",
+    "city": "Eagletown",
+    "firstName": "Sonya",
+    "lastName": "Bruce",
+    "phoneNumber": "(857) 515-3425",
+    "state": "Louisiana",
+    "streetAddress1": "Broome Street",
+    "streetAddress2": "Apt 1",
+    "zipcode": "90210"
+  },
+  {
+    "contactID": "5b0d0ea48159d96c1591ab40",
+    "city": "Chemung",
+    "firstName": "Nichole",
+    "lastName": "Kemp",
+    "phoneNumber": "(933) 437-3193",
+    "state": "Hawaii",
+    "streetAddress1": "Dunne Place",
+    "streetAddress2": "Apt 1",
+    "zipcode": "90210"
+  },
+  {
+    "contactID": "5b0d0ea4bd2b25d1e0aa3ccb",
+    "city": "Terlingua",
+    "firstName": "Garner",
+    "lastName": "Mccall",
+    "phoneNumber": "(950) 564-3056",
+    "state": "Virginia",
+    "streetAddress1": "Butler Place",
+    "streetAddress2": "Apt 1",
+    "zipcode": "90210"
+  },
+  {
+    "contactID": "5b0d0ea4b59fdf690737e317",
+    "city": "Goochland",
+    "firstName": "Hannah",
+    "lastName": "Dillard",
+    "phoneNumber": "(894) 506-3873",
+    "state": "Palau",
+    "streetAddress1": "Clymer Street",
+    "streetAddress2": "Apt 1",
+    "zipcode": "90210"
+  }
+]
