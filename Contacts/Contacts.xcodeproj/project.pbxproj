@@ -13,6 +13,9 @@
 		66D726D220BD2F81004372CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66D726D120BD2F81004372CD /* Assets.xcassets */; };
 		66D726D520BD2F82004372CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D726D320BD2F82004372CD /* LaunchScreen.storyboard */; };
 		66D726E020BD2F82004372CD /* ContactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726DF20BD2F82004372CD /* ContactsTests.swift */; };
+		66D726EE20BD3094004372CD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66D726EC20BD3094004372CD /* Model.xcdatamodeld */; };
+		66D726F620BD33A4004372CD /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726F420BD33A3004372CD /* Contact+CoreDataProperties.swift */; };
+		66D726F720BD33A4004372CD /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726F520BD33A4004372CD /* Contact+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		66D726DB20BD2F82004372CD /* ContactsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66D726DF20BD2F82004372CD /* ContactsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTests.swift; sourceTree = "<group>"; };
 		66D726E120BD2F82004372CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66D726ED20BD3094004372CD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		66D726F420BD33A3004372CD /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		66D726F520BD33A4004372CD /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +83,9 @@
 		66D726C920BD2F81004372CD /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				66D726CA20BD2F81004372CD /* AppDelegate.swift */,
-				66D726CC20BD2F81004372CD /* ViewController.swift */,
-				66D726CE20BD2F81004372CD /* Main.storyboard */,
-				66D726D120BD2F81004372CD /* Assets.xcassets */,
-				66D726D320BD2F82004372CD /* LaunchScreen.storyboard */,
-				66D726D620BD2F82004372CD /* Info.plist */,
+				66D726EB20BD307F004372CD /* Supporting */,
+				66D726EF20BD309A004372CD /* Model */,
+				66D726EA20BD3067004372CD /* UI */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -94,6 +97,44 @@
 				66D726E120BD2F82004372CD /* Info.plist */,
 			);
 			path = ContactsTests;
+			sourceTree = "<group>";
+		};
+		66D726EA20BD3067004372CD /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				66D726CC20BD2F81004372CD /* ViewController.swift */,
+				66D726CE20BD2F81004372CD /* Main.storyboard */,
+				66D726D120BD2F81004372CD /* Assets.xcassets */,
+				66D726D320BD2F82004372CD /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		66D726EB20BD307F004372CD /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				66D726CA20BD2F81004372CD /* AppDelegate.swift */,
+				66D726D620BD2F82004372CD /* Info.plist */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		66D726EF20BD309A004372CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				66D726F820BD3414004372CD /* Contacts */,
+				66D726EC20BD3094004372CD /* Model.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		66D726F820BD3414004372CD /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				66D726F520BD33A4004372CD /* Contact+CoreDataClass.swift */,
+				66D726F420BD33A3004372CD /* Contact+CoreDataProperties.swift */,
+			);
+			path = Contacts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +238,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66D726F620BD33A4004372CD /* Contact+CoreDataProperties.swift in Sources */,
 				66D726CD20BD2F81004372CD /* ViewController.swift in Sources */,
 				66D726CB20BD2F81004372CD /* AppDelegate.swift in Sources */,
+				66D726EE20BD3094004372CD /* Model.xcdatamodeld in Sources */,
+				66D726F720BD33A4004372CD /* Contact+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +404,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TR4PP43778;
-				INFOPLIST_FILE = Contacts/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Contacts/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -378,7 +422,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TR4PP43778;
-				INFOPLIST_FILE = Contacts/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Contacts/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,6 +507,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		66D726EC20BD3094004372CD /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				66D726ED20BD3094004372CD /* Model.xcdatamodel */,
+			);
+			currentVersion = 66D726ED20BD3094004372CD /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 66D726BF20BD2F81004372CD /* Project object */;
 }
