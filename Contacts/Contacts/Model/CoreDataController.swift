@@ -3,12 +3,12 @@ import CoreData
 
 protocol CoreDataControllerDelegate: class {
     func coreDataControllerDidInitializeStores(_ controller: CoreDataController)
-    func coreDataControllerDidFetchContacts(_ controller: CoreDataController)
+    func coreDataController(_ controller: CoreDataController, didFetch contacts: [Contact])
 }
 
 class CoreDataController: NSObject {
     
-    var fetchedResultsController: NSFetchedResultsController<Contact>?
+    private var fetchedResultsController: NSFetchedResultsController<Contact>?
 
     private var persistentContainer: NSPersistentContainer!
     private weak var delegate: CoreDataControllerDelegate!
@@ -35,6 +35,10 @@ class CoreDataController: NSObject {
         saveContext()
     }
     
+    func createContact(state: String?, city: String?, streetAddress1: String?, streetAddress2: String?, phoneNumber: String?, firstName: String?, lastName: String?, zipcode: String?, contactID: String = UUID().uuidString) {
+        insertContactInContext(state: state, city: city, streetAddress1: streetAddress1, streetAddress2: streetAddress2, phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, zipcode: zipcode, contactID: contactID)
+        saveContext()
+    }
     
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Contact")
@@ -46,12 +50,14 @@ class CoreDataController: NSObject {
         
         do {
             try fetchedResultsController?.performFetch()
-            print(fetchedResultsController?.fetchedObjects ?? "MA")
-            delegate.coreDataControllerDidFetchContacts(self)
+            let contacts = fetchedResultsController?.fetchedObjects ?? [Contact]()
+            delegate.coreDataController(self, didFetch: contacts)
         } catch {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
     }
+
+    // MARK: - Private
     
     private func createContact(from json: [String: Any]) {
         guard let contactID = json["contactID"] as? String else { return }
@@ -63,6 +69,11 @@ class CoreDataController: NSObject {
         let firstName = json["firstName"] as? String
         let lastName = json["lastName"] as? String
         let zipcode = json["zipcode"] as? String
+        
+        insertContactInContext(state: state, city: city, streetAddress1: streetAddress1, streetAddress2: streetAddress2, phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, zipcode: zipcode, contactID: contactID)
+    }
+    
+    private func insertContactInContext(state: String?, city: String?, streetAddress1: String?, streetAddress2: String?, phoneNumber: String?, firstName: String?, lastName: String?, zipcode: String?, contactID: String) {
         let contact = NSEntityDescription.insertNewObject(forEntityName: "Contact", into: persistentContainer.viewContext) as! Contact
         contact.contactID = contactID
         contact.state = state

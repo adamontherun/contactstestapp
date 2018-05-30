@@ -37,7 +37,7 @@ class ContactsTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueFromContactsToAddContact" {
             guard let contactFormTableViewController = segue.destination as? ContactFormTableViewController else { fatalError("Expected a contact form tvc") }
-            contactFormTableViewController.configure(.new)
+            contactFormTableViewController.configure(.new, contactsStore: contactsStore)
         }
     }
 }

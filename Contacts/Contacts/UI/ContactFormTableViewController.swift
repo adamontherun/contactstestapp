@@ -22,11 +22,13 @@ class ContactFormTableViewController: UITableViewController {
     
     private var activeTextField: UITextField?
     private var contactFormState = ContactFormState.undefined
+    private var contactsStore: ContactsStore!
     
     // MARK: - Public
     
-    func configure(_ contactFormState: ContactFormState) {
+    func configure(_ contactFormState: ContactFormState, contactsStore: ContactsStore) {
         self.contactFormState = contactFormState
+        self.contactsStore = contactsStore
     }
     
     // MARK: - Lifecycle
@@ -47,6 +49,16 @@ class ContactFormTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func handleSaveWasTapped(_ sender: Any) {
+        switch contactFormState {
+        case .undefined:
+            print("handle undefined")
+        case .new:
+            contactsStore.createContact(state: stateTextField.text, city: cityTextField.text, streetAddress1: address1TextField.text, streetAddress2: address2TextField.text, phoneNumber: phoneNumberTextField.text, firstName: firstNameTextField.text, lastName: lastNameTextField.text, zipcode: zipcodeTextField.text)
+        case .edit(let contact):
+            // TODO: update
+            print(contact)
+        }
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func handleBackgroundTapped(_ sender: Any) {
