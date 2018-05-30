@@ -8,6 +8,9 @@ enum ContactFormState {
 
 class ContactFormTableViewController: UITableViewController {
     
+    
+    @IBOutlet var textFields: [UITextField]!
+    
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -17,6 +20,7 @@ class ContactFormTableViewController: UITableViewController {
     @IBOutlet weak var stateTextField: UITextField!
     @IBOutlet weak var zipcodeTextField: UITextField!
     
+    private var activeTextField: UITextField?
     private var contactFormState = ContactFormState.undefined
     
     // MARK: - Public
@@ -26,15 +30,16 @@ class ContactFormTableViewController: UITableViewController {
     }
     
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerKeyboardNotifications()
         configureUI()
         configureTableView()
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8
     }
@@ -44,10 +49,14 @@ class ContactFormTableViewController: UITableViewController {
     @IBAction func handleSaveWasTapped(_ sender: Any) {
     }
     
-
+    @IBAction func handleBackgroundTapped(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
     // MARK: - UI Configuration
     
     private func configureUI() {
+        textFields.forEach{ $0.delegate = self }
         switch contactFormState {
         case .undefined:
             return
@@ -72,5 +81,47 @@ class ContactFormTableViewController: UITableViewController {
     
     private func configureTableView() {
         tableView.tableFooterView = UIView()
+    }
+}
+
+extension ContactFormTableViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField){
+        activeTextField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField){
+        activeTextField = nil
+    }
+}
+
+extension ContactFormTableViewController {
+    private func registerKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        
+        var info = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let navBarHeight = navigationController?.navigationBar.frame.size.height ?? 0
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height - navBarHeight, 0.0)
+        
+        tableView.contentInset = contentInsets
+        tableView.scrollIndicatorInsets = contentInsets
+        var aRect : CGRect = self.view.frame
+        aRect.size.height -= keyboardSize!.height
+        aRect.size.height -= navBarHeight
+        guard let activeTextField = activeTextField,
+            !aRect.contains(activeTextField.frame.origin) else  { return }
+        tableView.scrollRectToVisible(activeTextField.frame, animated: true)
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        var info = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
+        tableView.contentInset = contentInsets
+        tableView.scrollIndicatorInsets = contentInsets
     }
 }

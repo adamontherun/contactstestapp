@@ -62,6 +62,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <sections>
                             <tableViewSection id="Ua9-Pi-brp">
                                 <cells>
@@ -247,6 +248,7 @@
                         <connections>
                             <outlet property="dataSource" destination="CyV-CO-KkA" id="J1c-Ee-5sA"/>
                             <outlet property="delegate" destination="CyV-CO-KkA" id="cJh-5Z-UII"/>
+                            <outletCollection property="gestureRecognizers" destination="Mpt-3k-ZVu" appends="YES" id="9Kx-cC-kf1"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="cKx-R5-Shr">
@@ -265,9 +267,22 @@
                         <outlet property="phoneNumberTextField" destination="7Ow-zb-CEy" id="g18-Bt-9mj"/>
                         <outlet property="stateTextField" destination="38P-aP-Us6" id="te3-KF-eyT"/>
                         <outlet property="zipcodeTextField" destination="3bx-dr-joc" id="Taz-Fm-wKg"/>
+                        <outletCollection property="textFields" destination="HH7-Na-Apy" collectionClass="NSMutableArray" id="JsN-ho-4yq"/>
+                        <outletCollection property="textFields" destination="3hk-4c-qXB" collectionClass="NSMutableArray" id="CFV-H3-izR"/>
+                        <outletCollection property="textFields" destination="7Ow-zb-CEy" collectionClass="NSMutableArray" id="sFw-D3-UeT"/>
+                        <outletCollection property="textFields" destination="OWm-vi-GBS" collectionClass="NSMutableArray" id="qqs-1h-Sd6"/>
+                        <outletCollection property="textFields" destination="rCP-rW-QdF" collectionClass="NSMutableArray" id="qAJ-WL-Itj"/>
+                        <outletCollection property="textFields" destination="bcw-Nb-IEU" collectionClass="NSMutableArray" id="DCr-Qd-0Bm"/>
+                        <outletCollection property="textFields" destination="38P-aP-Us6" collectionClass="NSMutableArray" id="JRi-Lr-TH7"/>
+                        <outletCollection property="textFields" destination="3bx-dr-joc" collectionClass="NSMutableArray" id="W8d-cA-7kt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmL-yW-twN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Mpt-3k-ZVu">
+                    <connections>
+                        <action selector="handleBackgroundTapped:" destination="CyV-CO-KkA" id="Ldm-RP-cro"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1514" y="223"/>
         </scene>
