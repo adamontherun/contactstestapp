@@ -23,6 +23,7 @@
 		66D7270420BDDDDF004372CD /* JSONFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7270320BDDDDF004372CD /* JSONFetcher.swift */; };
 		66D7270820BE025A004372CD /* NSNotifiation.Name+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7270720BE025A004372CD /* NSNotifiation.Name+Custom.swift */; };
 		66D7270A20BE0A2A004372CD /* ContactsTableViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7270920BE0A2A004372CD /* ContactsTableViewControllerDataSource.swift */; };
+		66D7270C20BE6B7A004372CD /* ContactFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7270B20BE6B7A004372CD /* ContactFormTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		66D7270320BDDDDF004372CD /* JSONFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFetcher.swift; sourceTree = "<group>"; };
 		66D7270720BE025A004372CD /* NSNotifiation.Name+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotifiation.Name+Custom.swift"; sourceTree = "<group>"; };
 		66D7270920BE0A2A004372CD /* ContactsTableViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewControllerDataSource.swift; sourceTree = "<group>"; };
+		66D7270B20BE6B7A004372CD /* ContactFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				66D726D320BD2F82004372CD /* LaunchScreen.storyboard */,
 				66D726FB20BD39CA004372CD /* ContactsTableViewController.swift */,
 				66D7270920BE0A2A004372CD /* ContactsTableViewControllerDataSource.swift */,
+				66D7270B20BE6B7A004372CD /* ContactFormTableViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				66D7270420BDDDDF004372CD /* JSONFetcher.swift in Sources */,
 				66D726F720BD33A4004372CD /* Contact+CoreDataClass.swift in Sources */,
 				66D7270820BE025A004372CD /* NSNotifiation.Name+Custom.swift in Sources */,
+				66D7270C20BE6B7A004372CD /* ContactFormTableViewController.swift in Sources */,
 				66D726FC20BD39CA004372CD /* ContactsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

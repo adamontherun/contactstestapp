@@ -1,7 +1,6 @@
 import UIKit
 import CoreData
 
-
 protocol CoreDataControllerDelegate: class {
     func coreDataControllerDidInitializeStores(_ controller: CoreDataController)
     func coreDataControllerDidFetchContacts(_ controller: CoreDataController)
@@ -9,9 +8,10 @@ protocol CoreDataControllerDelegate: class {
 
 class CoreDataController: NSObject {
     
-    var managedObjectContext: NSManagedObjectContext!
     var fetchedResultsController: NSFetchedResultsController<Contact>?
-    weak var delegate: CoreDataControllerDelegate!
+
+    private var managedObjectContext: NSManagedObjectContext!
+    private weak var delegate: CoreDataControllerDelegate!
 
     init(delegate: CoreDataControllerDelegate) {
         self.delegate = delegate
