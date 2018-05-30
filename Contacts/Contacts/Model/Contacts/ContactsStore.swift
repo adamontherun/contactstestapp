@@ -1,12 +1,10 @@
 import UIKit
 
-
 class ContactsStore {
     
     private var coreDataController: CoreDataController!
     var contacts = [Contact]()
 
-    
     // MARK: - Initializers
     
     init() {
@@ -17,6 +15,7 @@ class ContactsStore {
         let json = JSONFetcher.fetchInitialContactsJSON()
         coreDataController.createContacts(from: json)
         FirstUsageManager.markAsUsed()
+        fetchContacts()
     }
     
     func fetchContacts() {
@@ -27,7 +26,7 @@ class ContactsStore {
 extension ContactsStore: CoreDataControllerDelegate {
     func coreDataControllerDidInitializeStores(_ controller: CoreDataController) {
         let isFirstUsage = FirstUsageManager.checkIfAppsFirstUse()
-        if isFirstUsage { addInitialContacts() }
+        isFirstUsage ? addInitialContacts() : fetchContacts()
     }
     
     func coreDataControllerDidFetchContacts(_ controller: CoreDataController) {
@@ -35,6 +34,4 @@ extension ContactsStore: CoreDataControllerDelegate {
         contacts = fetchedContacts
         NotificationCenter.default.post(name: .contactsFetched, object: nil)
     }
-    
-    
 }

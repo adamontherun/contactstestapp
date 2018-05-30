@@ -13,7 +13,6 @@ class ContactsTableViewController: UITableViewController {
         super.viewDidLoad()
         configureTableView()
         addObservers()
-        contactsStore.fetchContacts()
     }
     
     // MARK: - UI Configuration

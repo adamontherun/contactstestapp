@@ -10,7 +10,7 @@ class CoreDataController: NSObject {
     
     var fetchedResultsController: NSFetchedResultsController<Contact>?
 
-    private var managedObjectContext: NSManagedObjectContext!
+    private var persistentContainer: NSPersistentContainer!
     private weak var delegate: CoreDataControllerDelegate!
 
     init(delegate: CoreDataControllerDelegate) {
@@ -22,7 +22,7 @@ class CoreDataController: NSObject {
                 fatalError("Failed to load Core Data stack: \(error)")
             }
             //print(persistentContainer.persistentStoreCoordinator.persistentStores.first!.url!)
-            self?.managedObjectContext = persistentContainer.viewContext
+            self?.persistentContainer = persistentContainer
             DispatchQueue.main.async {
                 guard let this = self else { return }
                 this.delegate.coreDataControllerDidInitializeStores(this)
@@ -41,7 +41,7 @@ class CoreDataController: NSObject {
         let departmentSort = NSSortDescriptor(key: "firstName", ascending: true)
         request.sortDescriptors = [departmentSort]
         
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<Contact>
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<Contact>
         fetchedResultsController!.delegate = self
         
         do {
@@ -63,7 +63,7 @@ class CoreDataController: NSObject {
         let firstName = json["firstName"] as? String
         let lastName = json["lastName"] as? String
         let zipcode = json["zipcode"] as? String
-        let contact = NSEntityDescription.insertNewObject(forEntityName: "Contact", into: managedObjectContext) as! Contact
+        let contact = NSEntityDescription.insertNewObject(forEntityName: "Contact", into: persistentContainer.viewContext) as! Contact
         contact.contactID = contactID
         contact.state = state
         contact.city = city
@@ -77,7 +77,7 @@ class CoreDataController: NSObject {
     
     private func saveContext() {
         do {
-            try managedObjectContext.save()
+            try persistentContainer.viewContext.save()
         } catch {
             fatalError("Failure to save context: \(error)")
         }
@@ -89,5 +89,4 @@ extension CoreDataController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         print(controller.fetchedObjects ?? "NA")
     }
-
 }
