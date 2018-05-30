@@ -104,6 +104,27 @@ extension ContactFormTableViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField){
         activeTextField = nil
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == firstNameTextField {
+            lastNameTextField.becomeFirstResponder()
+        } else if textField == lastNameTextField {
+            phoneNumberTextField.becomeFirstResponder()
+        } else if textField == phoneNumberTextField {
+            address1TextField.becomeFirstResponder()
+        } else if textField == address1TextField {
+            address2TextField.becomeFirstResponder()
+        } else if textField == address2TextField {
+            cityTextField.becomeFirstResponder()
+        } else if textField == cityTextField {
+            stateTextField.becomeFirstResponder()
+        } else if textField == stateTextField {
+            zipcodeTextField.becomeFirstResponder()
+        } else if textField == zipcodeTextField {
+            view.endEditing(true)
+        }
+        return true
+    }
 }
 
 extension ContactFormTableViewController {

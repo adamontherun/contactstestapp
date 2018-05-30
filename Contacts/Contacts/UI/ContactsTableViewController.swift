@@ -26,10 +26,27 @@ class ContactsTableViewController: UITableViewController {
     
     private func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleContactsFetched(notification:)), name: .contactsFetched, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleContactUpdated(notification:)), name: .contactUpdated, object: nil)
     }
     
     @objc private func handleContactsFetched(notification: Notification) {
         tableView.reloadData()
+    }
+    
+    @objc private func handleContactUpdated(notification: Notification) {
+        guard let info = notification.userInfo,
+            let contactStoreUpdate = info["type"] as? ContactStoreUpdate else { return }
+
+        tableView.beginUpdates()
+        switch contactStoreUpdate {        
+        case .added(let indexPath):
+            tableView.insertRows(at: [indexPath], with: .automatic)
+        case .updated(let indexPath):
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        case .deleted(let indexPath):
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        tableView.endUpdates()
     }
     
     // MARK: - Navigation
