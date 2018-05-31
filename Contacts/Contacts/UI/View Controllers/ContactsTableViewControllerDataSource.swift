@@ -4,8 +4,17 @@ class ContactsTableViewControllerDataSource: NSObject, UITableViewDataSource {
     
     private var contactsStore: ContactsStore!
     
+    // MARK: - Initializers
+    
     init(_ contactsStore: ContactsStore) {
         self.contactsStore = contactsStore
+    }
+    
+    // MARK: - Public
+    
+    func contact(at indexPath: IndexPath)-> Contact? {
+        if contactsStore.contacts.indices.contains(indexPath.row) { return contactsStore.contacts[indexPath.row] }
+        else { return nil }
     }
     
     // MARK: - Table view data source

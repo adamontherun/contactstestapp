@@ -4,11 +4,11 @@ class ContactsTableViewController: UITableViewController {
     
     private let contactsStore = ContactsStore()
     private lazy var contactsTableViewControllerDataSource: ContactsTableViewControllerDataSource =  {
-       return ContactsTableViewControllerDataSource(contactsStore)
+        return ContactsTableViewControllerDataSource(contactsStore)
     }()
     
     // MARK: Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -21,7 +21,7 @@ class ContactsTableViewController: UITableViewController {
         tableView.dataSource = contactsTableViewControllerDataSource
         tableView.tableFooterView = UIView()
     }
- 
+    
     // MARK: - Observers
     
     private func addObservers() {
@@ -36,7 +36,7 @@ class ContactsTableViewController: UITableViewController {
     @objc private func handleContactUpdated(notification: Notification) {
         guard let info = notification.userInfo,
             let contactStoreUpdate = info["type"] as? ContactStoreUpdate else { return }
-
+        
         tableView.beginUpdates()
         switch contactStoreUpdate {        
         case .added(let indexPath):
@@ -49,12 +49,26 @@ class ContactsTableViewController: UITableViewController {
         tableView.endUpdates()
     }
     
+    // MARK: - TableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       performSegue(withIdentifier: "segueFromContactsToContactDetail", sender: self)
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueFromContactsToAddContact" {
             guard let contactFormTableViewController = segue.destination as? ContactFormTableViewController else { fatalError("Expected a contact form tvc") }
             contactFormTableViewController.configure(.new, contactsStore: contactsStore)
+        } else if segue.identifier == "segueFromContactsToContactDetail" {
+            guard
+                let contactDetailViewController = segue.destination as? ContactDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow,
+                let contact = contactsTableViewControllerDataSource.contact(at: indexPath)
+                else { fatalError() }
+            
+            contactDetailViewController.configure(contact, contactsStore: contactsStore)
         }
     }
 }
