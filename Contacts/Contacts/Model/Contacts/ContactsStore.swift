@@ -26,6 +26,10 @@ class ContactsStore {
         coreDataController.edit(contact: contact, state: state, city: city, streetAddress1: streetAddress1, streetAddress2: streetAddress2, phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, zipcode: zipcode)
     }
     
+    func delete(contact: Contact) {
+        coreDataController.delete(contact: contact)
+    }
+    
     // MARK: - Private
     
     private func addInitialContacts() {

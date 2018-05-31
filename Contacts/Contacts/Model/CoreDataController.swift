@@ -49,6 +49,11 @@ class CoreDataController: NSObject {
         saveContext()
     }
     
+    func delete(contact: Contact) {
+        persistentContainer.viewContext.delete(contact)
+        saveContext()
+    }
+    
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Contact")
         let departmentSort = NSSortDescriptor(key: "firstName", ascending: true)
@@ -109,17 +114,19 @@ class CoreDataController: NSObject {
 
 extension CoreDataController: NSFetchedResultsControllerDelegate {
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        guard let newIndexPath = newIndexPath else { return }
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {        
         switch type {
         case .insert:
+            guard let newIndexPath = newIndexPath else { fatalError() }
             delegate.coreDataController(self, addedContactAt: newIndexPath)
         case .delete:
-            delegate.coreDataController(self, deletedContactAt: newIndexPath)
+            guard let indexPath = indexPath else { fatalError() }
+            delegate.coreDataController(self, deletedContactAt: indexPath)
         case .move:
             return
         case .update:
-            guard let contact = anObject as? Contact else { fatalError() }
+            guard let contact = anObject as? Contact,
+            let newIndexPath = newIndexPath else { fatalError() }
             delegate.coreDataController(self, updatedContact: contact, at: newIndexPath)
         }
     }

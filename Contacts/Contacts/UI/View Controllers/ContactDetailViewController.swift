@@ -37,7 +37,8 @@ class ContactDetailViewController: UIViewController {
     // MARK: - Action
     
     @IBAction func handleTrashTapped(_ sender: Any) {
-        
+        contactsStore.delete(contact: contact)
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Observers
@@ -51,7 +52,7 @@ class ContactDetailViewController: UIViewController {
             let contactStoreUpdate = info["type"] as? ContactStoreUpdate else { return }
         if case let ContactStoreUpdate.updated(_, contact) = contactStoreUpdate {
             self.contact = contact
-            configureLabels()
+            configureUI()
         }
     }
     
