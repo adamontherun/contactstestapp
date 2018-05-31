@@ -9,6 +9,8 @@ protocol CoreDataControllerDelegate: class {
     func coreDataController(_ controller: CoreDataController, deletedContactAt indexPath: IndexPath)
 }
 
+/// Regulates the adding, editing and deleting of NSManagedObjects
+
 class CoreDataController: NSObject {
     
     var fetchedResultsController: NSFetchedResultsController<Contact>?

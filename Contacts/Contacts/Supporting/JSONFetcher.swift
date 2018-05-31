@@ -1,5 +1,7 @@
 import Foundation
 
+/// Fetches a JSON file used to initially populate the UI with data
+
 enum JSONFetcher {
     static func fetchInitialContactsJSON()->[Any] {
         guard let path = Bundle.main.path(forResource: .contacts, ofType: .json) else { fatalError("couldn't load json file") }

@@ -1,5 +1,7 @@
 import UIKit
 
+/// Displays the details of a Contact
+
 class ContactDetailViewController: UIViewController {
     
     @IBOutlet var labels: [UILabel]!

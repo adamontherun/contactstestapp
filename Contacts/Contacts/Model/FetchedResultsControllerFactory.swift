@@ -1,7 +1,9 @@
 import Foundation
 import CoreData
 
-struct FetchedResultsControllerFactory {
+/// Creates the FetchedResultsController used to populate the ContactsTableView via the ContactsStore
+
+enum FetchedResultsControllerFactory {
     
     static func make(_ delegate: NSFetchedResultsControllerDelegate, context: NSManagedObjectContext)-> NSFetchedResultsController<Contact> {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: .Contact)

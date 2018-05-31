@@ -1,5 +1,7 @@
 import UIKit
 
+/// Displays a list of all contacts
+
 class ContactsTableViewController: UITableViewController {
     
     private let contactsStore = ContactsStore()

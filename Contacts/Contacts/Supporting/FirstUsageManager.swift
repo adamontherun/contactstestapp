@@ -1,5 +1,7 @@
 import Foundation
 
+/// Determines if this is the first time the app has been used.
+
 enum FirstUsageManager {
     static func markAsUsed() {
         UserDefaults.standard.set(true, forKey: .opened)

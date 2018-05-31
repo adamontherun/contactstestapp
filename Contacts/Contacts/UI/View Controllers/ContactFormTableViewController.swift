@@ -1,10 +1,14 @@
 import UIKit
 
+// Indicates the state of the ContactForm which uses this information to update the UI accordingly
+
 enum ContactFormState {
     case undefined
     case new
     case edit(contact: Contact)
 }
+
+/// A tableview controller used to get information about a Contact from the user to be added or edited
 
 class ContactFormTableViewController: UITableViewController {
     

@@ -1,5 +1,7 @@
 import Foundation
 
+/// Used to replace the 'stringly typed' APIs in Cocoa.
+
 extension String {
     
     // MARK: - Segues

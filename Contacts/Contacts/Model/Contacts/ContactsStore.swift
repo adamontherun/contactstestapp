@@ -1,10 +1,14 @@
 import UIKit
 
+/// An object that indicates the type of change that happened to the ContactStore
+
 enum ContactStoreUpdate {
     case added(indexPath: IndexPath)
     case updated(indexPath: IndexPath, contact: Contact)
     case deleted(indexPath: IndexPath)
 }
+
+// A repository of contacts for the app that also sends notifications when the store is updated.
 
 class ContactsStore {
     

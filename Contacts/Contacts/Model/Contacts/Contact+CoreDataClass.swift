@@ -1,6 +1,8 @@
 import Foundation
 import CoreData
 
+/// A Contact is models a contact card that shows information about the user's connections
+
 @objc(Contact)
 public class Contact: NSManagedObject {}
 
