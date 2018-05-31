@@ -21,6 +21,14 @@ extension String {
     
     static let Contact = "Contact"
     
+    // MARK: - CoreData Model
+    
+    static let Model = "Model"
+    
+    // MARK: - CoreData SortDescriptor
+    
+    static let sortDescriptorFirstName = "firstName"
+    
     // MARK: - NotificationCenter UserInfo
     
     static let contactStoreUpdate = "contactStoreUpdate"

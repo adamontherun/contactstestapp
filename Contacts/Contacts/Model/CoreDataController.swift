@@ -12,7 +12,7 @@ protocol CoreDataControllerDelegate: class {
 class CoreDataController: NSObject {
     
     var fetchedResultsController: NSFetchedResultsController<Contact>?
-    let persistentContainer = NSPersistentContainer(name: "Model")
+    let persistentContainer = NSPersistentContainer(name: .Model)
     private weak var delegate: CoreDataControllerDelegate!
 
     init(delegate: CoreDataControllerDelegate) {
@@ -52,8 +52,8 @@ class CoreDataController: NSObject {
     }
     
     private func initializeFetchedResultsController() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Contact")
-        let departmentSort = NSSortDescriptor(key: "firstName", ascending: true)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: .Contact)
+        let departmentSort = NSSortDescriptor(key: .sortDescriptorFirstName, ascending: true)
         request.sortDescriptors = [departmentSort]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<Contact>
