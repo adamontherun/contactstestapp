@@ -5,7 +5,7 @@ import CoreData
 extension Contact {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Contact> {
-        return NSFetchRequest<Contact>(entityName: "Contact")
+        return NSFetchRequest<Contact>(entityName: .Contact)
     }
 
     @NSManaged public var contactID: String

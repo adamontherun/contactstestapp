@@ -49,7 +49,7 @@ class ContactDetailViewController: UIViewController {
     
     @objc private func handleContactUpdated(notification: Notification) {
         guard let info = notification.userInfo,
-            let contactStoreUpdate = info["type"] as? ContactStoreUpdate else { return }
+            let contactStoreUpdate = info[String.contactStoreUpdate] as? ContactStoreUpdate else { return }
         if case let ContactStoreUpdate.updated(_, contact) = contactStoreUpdate {
             self.contact = contact
             configureUI()
@@ -77,7 +77,7 @@ class ContactDetailViewController: UIViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueFromDetailToForm" {
+        if segue.identifier == .segueFromDetailToForm {
             guard let contactFormTableViewController = segue.destination as? ContactFormTableViewController else { fatalError("Expected a contact form tvc") }
             contactFormTableViewController.configure(.edit(contact: contact), contactsStore: contactsStore)
         }

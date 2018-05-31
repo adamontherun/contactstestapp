@@ -54,17 +54,17 @@ extension ContactsStore: CoreDataControllerDelegate {
     }
     
     func coreDataControllerDidFetchContacts(_ controller: CoreDataController) {
-        NotificationCenter.default.post(name: .contactsFetched, object: nil)
+        //NotificationCenter.default.post(name: .contactsFetched, object: nil)
     }
     
     func coreDataController(_ controller: CoreDataController, addedContactAt indexPath: IndexPath) {
-        NotificationCenter.default.post(name: .contactUpdated, object: nil, userInfo: ["type" : ContactStoreUpdate.added(indexPath: indexPath)])
+        NotificationCenter.default.post(name: .contactUpdated, object: nil, userInfo: [String.contactStoreUpdate : ContactStoreUpdate.added(indexPath: indexPath)])
     }
     func coreDataController(_ controller: CoreDataController, updatedContact contact: Contact, at indexPath: IndexPath) {
-        NotificationCenter.default.post(name: .contactUpdated, object: nil, userInfo: ["type" : ContactStoreUpdate.updated(indexPath: indexPath, contact: contact)])
+        NotificationCenter.default.post(name: .contactUpdated, object: nil, userInfo: [String.contactStoreUpdate : ContactStoreUpdate.updated(indexPath: indexPath, contact: contact)])
     }
     
     func coreDataController(_ controller: CoreDataController, deletedContactAt indexPath: IndexPath) {
-        NotificationCenter.default.post(name: .contactUpdated, object: nil, userInfo: ["type" : ContactStoreUpdate.deleted(indexPath: indexPath)])
+        NotificationCenter.default.post(name: .contactUpdated, object: nil, userInfo: [String.contactStoreUpdate : ContactStoreUpdate.deleted(indexPath: indexPath)])
     }
 }

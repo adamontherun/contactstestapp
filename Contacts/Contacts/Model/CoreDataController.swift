@@ -15,6 +15,7 @@ class CoreDataController: NSObject {
 
     private var persistentContainer: NSPersistentContainer!
     private weak var delegate: CoreDataControllerDelegate!
+    private var hasPerformedInitialFetch = false
 
     init(delegate: CoreDataControllerDelegate) {
         self.delegate = delegate
@@ -65,6 +66,7 @@ class CoreDataController: NSObject {
         do {
             try fetchedResultsController?.performFetch()
             delegate.coreDataControllerDidFetchContacts(self)
+            hasPerformedInitialFetch = true
         } catch {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
@@ -73,21 +75,21 @@ class CoreDataController: NSObject {
     // MARK: - Private
     
     private func createContact(from json: [String: Any]) {
-        guard let contactID = json["contactID"] as? String else { return }
-        let state = json["state"] as? String
-        let city = json["city"] as? String
-        let streetAddress1 = json["streetAddress1"] as? String
-        let streetAddress2 = json["streetAddress2"] as? String
-        let phoneNumber = json["phoneNumber"] as? String
-        let firstName = json["firstName"] as? String
-        let lastName = json["lastName"] as? String
-        let zipcode = json["zipcode"] as? String
+        guard let contactID = json[.contactID] as? String else { return }
+        let state = json[.state] as? String
+        let city = json[.city] as? String
+        let streetAddress1 = json[.streetAddress1] as? String
+        let streetAddress2 = json[.streetAddress2] as? String
+        let phoneNumber = json[.phoneNumber] as? String
+        let firstName = json[.firstName] as? String
+        let lastName = json[.lastName] as? String
+        let zipcode = json[.zipcode] as? String
         
         insertContactInContext(state: state, city: city, streetAddress1: streetAddress1, streetAddress2: streetAddress2, phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, zipcode: zipcode, contactID: contactID)
     }
     
     private func insertContactInContext(state: String?, city: String?, streetAddress1: String?, streetAddress2: String?, phoneNumber: String?, firstName: String?, lastName: String?, zipcode: String?, contactID: String) {
-        let contact = NSEntityDescription.insertNewObject(forEntityName: "Contact", into: persistentContainer.viewContext) as! Contact
+        let contact = NSEntityDescription.insertNewObject(forEntityName: .Contact, into: persistentContainer.viewContext) as! Contact
         update(contact, contactID: contactID, state: state, city: city, streetAddress1: streetAddress1, streetAddress2: streetAddress2, phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, zipcode: zipcode)
     }
     
@@ -115,6 +117,7 @@ class CoreDataController: NSObject {
 extension CoreDataController: NSFetchedResultsControllerDelegate {
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {        
+        if !hasPerformedInitialFetch { return }
         switch type {
         case .insert:
             guard let newIndexPath = newIndexPath else { fatalError() }

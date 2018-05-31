@@ -22,6 +22,7 @@ class ContactFormTableViewController: UITableViewController {
     private var activeTextField: UITextField?
     private var contactFormState = ContactFormState.undefined
     private var contactsStore: ContactsStore!
+    private let numberOfFields = 8
     
     // MARK: - Public
     
@@ -42,7 +43,7 @@ class ContactFormTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return numberOfFields
     }
     
     // MARK: - Actions
@@ -71,9 +72,9 @@ class ContactFormTableViewController: UITableViewController {
         case .undefined:
             return
         case .new:
-            navigationItem.title = "Add Contact"
+            navigationItem.title = .addContact
         case .edit(let contact):
-            navigationItem.title = "Edit Contact"
+            navigationItem.title = .editContact
             fillTextFields(with: contact)
         }
     }

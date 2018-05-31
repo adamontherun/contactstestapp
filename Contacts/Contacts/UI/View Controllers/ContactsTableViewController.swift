@@ -35,7 +35,7 @@ class ContactsTableViewController: UITableViewController {
     
     @objc private func handleContactUpdated(notification: Notification) {
         guard let info = notification.userInfo,
-            let contactStoreUpdate = info["type"] as? ContactStoreUpdate else { return }
+            let contactStoreUpdate = info[String.contactStoreUpdate] as? ContactStoreUpdate else { return }
         
         tableView.beginUpdates()
         switch contactStoreUpdate {        
@@ -52,16 +52,16 @@ class ContactsTableViewController: UITableViewController {
     // MARK: - TableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       performSegue(withIdentifier: "segueFromContactsToContactDetail", sender: self)
+       performSegue(withIdentifier: .segueFromContactsToContactDetail, sender: self)
     }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueFromContactsToAddContact" {
+        if segue.identifier ==  .segueFromContactsToAddContact {
             guard let contactFormTableViewController = segue.destination as? ContactFormTableViewController else { fatalError("Expected a contact form tvc") }
             contactFormTableViewController.configure(.new, contactsStore: contactsStore)
-        } else if segue.identifier == "segueFromContactsToContactDetail" {
+        } else if segue.identifier == .segueFromContactsToContactDetail {
             guard
                 let contactDetailViewController = segue.destination as? ContactDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow,
