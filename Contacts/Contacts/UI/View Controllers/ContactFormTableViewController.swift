@@ -8,7 +8,6 @@ enum ContactFormState {
 
 class ContactFormTableViewController: UITableViewController {
     
-    
     @IBOutlet var textFields: [UITextField]!
     
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -55,10 +54,9 @@ class ContactFormTableViewController: UITableViewController {
         case .new:
             contactsStore.createContact(state: stateTextField.text, city: cityTextField.text, streetAddress1: address1TextField.text, streetAddress2: address2TextField.text, phoneNumber: phoneNumberTextField.text, firstName: firstNameTextField.text, lastName: lastNameTextField.text, zipcode: zipcodeTextField.text)
         case .edit(let contact):
-            // TODO: update
-            print(contact)
+            contactsStore.update(contact: contact, state: stateTextField.text, city: cityTextField.text, streetAddress1: address1TextField.text, streetAddress2: address2TextField.text, phoneNumber: phoneNumberTextField.text, firstName: firstNameTextField.text, lastName: lastNameTextField.text, zipcode: zipcodeTextField.text)
         }
-        navigationController?.popToRootViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func handleBackgroundTapped(_ sender: Any) {

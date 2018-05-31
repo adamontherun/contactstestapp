@@ -30,13 +30,39 @@ class ContactDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addObservers()
         configureUI()
+    }
+    
+    // MARK: - Action
+    
+    @IBAction func handleTrashTapped(_ sender: Any) {
+        
+    }
+    
+    // MARK: - Observers
+    
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleContactUpdated(notification:)), name: .contactUpdated, object: nil)
+    }
+    
+    @objc private func handleContactUpdated(notification: Notification) {
+        guard let info = notification.userInfo,
+            let contactStoreUpdate = info["type"] as? ContactStoreUpdate else { return }
+        if case let ContactStoreUpdate.updated(_, contact) = contactStoreUpdate {
+            self.contact = contact
+            configureLabels()
+        }
     }
     
     // MARK: - Private
     
     private func configureUI() {
         navigationItem.title = contact.displayName
+        configureLabels()
+    }
+    
+    private func configureLabels() {
         labels.forEach { $0.text = nil }
         firstNameLabel.text = contact.firstName
         lastNameLabel.text = contact.lastName
@@ -46,5 +72,13 @@ class ContactDetailViewController: UIViewController {
         cityLabel.text = contact.city
         stateLabel.text = contact.state
         zipcodeLabel.text = contact.zipcode
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueFromDetailToForm" {
+            guard let contactFormTableViewController = segue.destination as? ContactFormTableViewController else { fatalError("Expected a contact form tvc") }
+            contactFormTableViewController.configure(.edit(contact: contact), contactsStore: contactsStore)
+        }
     }
 }

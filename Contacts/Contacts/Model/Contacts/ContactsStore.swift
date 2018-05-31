@@ -2,7 +2,7 @@ import UIKit
 
 enum ContactStoreUpdate {
     case added(indexPath: IndexPath)
-    case updated(indexPath: IndexPath)
+    case updated(indexPath: IndexPath, contact: Contact)
     case deleted(indexPath: IndexPath)
 }
 
@@ -22,6 +22,10 @@ class ContactsStore {
         coreDataController.createContact(state: state, city: city, streetAddress1: streetAddress1, streetAddress2: streetAddress2, phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, zipcode: zipcode)
     }
     
+    func update(contact: Contact, state: String?, city: String?, streetAddress1: String?, streetAddress2: String?, phoneNumber: String?, firstName: String?, lastName: String?, zipcode: String?) {
+        coreDataController.edit(contact: contact, state: state, city: city, streetAddress1: streetAddress1, streetAddress2: streetAddress2, phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, zipcode: zipcode)
+    }
+    
     // MARK: - Private
     
     private func addInitialContacts() {
@@ -37,6 +41,8 @@ class ContactsStore {
 }
 
 extension ContactsStore: CoreDataControllerDelegate {
+
+    
     
     func coreDataControllerDidInitializeStores(_ controller: CoreDataController) {
         let isFirstUsage = FirstUsageManager.checkIfAppsFirstUse()
@@ -50,9 +56,8 @@ extension ContactsStore: CoreDataControllerDelegate {
     func coreDataController(_ controller: CoreDataController, addedContactAt indexPath: IndexPath) {
         NotificationCenter.default.post(name: .contactUpdated, object: nil, userInfo: ["type" : ContactStoreUpdate.added(indexPath: indexPath)])
     }
-    
-    func coreDataController(_ controller: CoreDataController, updatedContactAt indexPath: IndexPath) {
-        NotificationCenter.default.post(name: .contactUpdated, object: nil, userInfo: ["type" : ContactStoreUpdate.updated(indexPath: indexPath)])
+    func coreDataController(_ controller: CoreDataController, updatedContact contact: Contact, at indexPath: IndexPath) {
+        NotificationCenter.default.post(name: .contactUpdated, object: nil, userInfo: ["type" : ContactStoreUpdate.updated(indexPath: indexPath, contact: contact)])
     }
     
     func coreDataController(_ controller: CoreDataController, deletedContactAt indexPath: IndexPath) {

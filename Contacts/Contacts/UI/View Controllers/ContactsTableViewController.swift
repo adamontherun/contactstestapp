@@ -41,7 +41,7 @@ class ContactsTableViewController: UITableViewController {
         switch contactStoreUpdate {        
         case .added(let indexPath):
             tableView.insertRows(at: [indexPath], with: .automatic)
-        case .updated(let indexPath):
+        case .updated(let indexPath, _):
             tableView.reloadRows(at: [indexPath], with: .automatic)
         case .deleted(let indexPath):
             tableView.deleteRows(at: [indexPath], with: .automatic)

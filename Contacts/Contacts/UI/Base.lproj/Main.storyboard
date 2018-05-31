@@ -452,8 +452,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="TB6-Xs-xSL">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="trash" id="1Jv-5T-89T"/>
-                            <barButtonItem systemItem="edit" id="TXr-Kd-Ukh"/>
+                            <barButtonItem systemItem="trash" id="1Jv-5T-89T">
+                                <connections>
+                                    <action selector="handleTrashTapped:" destination="Z3K-5M-FRz" id="jEs-SK-6ps"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="edit" id="TXr-Kd-Ukh">
+                                <connections>
+                                    <segue destination="CyV-CO-KkA" kind="show" identifier="segueFromDetailToForm" id="rJG-7v-Jd3"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -477,7 +485,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvo-2w-2m2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1502" y="994"/>
+            <point key="canvasLocation" x="669" y="1036"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BsB-z8-Pfe">
@@ -498,4 +506,7 @@
             <point key="canvasLocation" x="-268" y="214.54272863568218"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="rJG-7v-Jd3"/>
+    </inferredMetricsTieBreakers>
 </document>

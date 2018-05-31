@@ -5,7 +5,7 @@ protocol CoreDataControllerDelegate: class {
     func coreDataControllerDidInitializeStores(_ controller: CoreDataController)
     func coreDataControllerDidFetchContacts(_ controller: CoreDataController)
     func coreDataController(_ controller: CoreDataController, addedContactAt indexPath: IndexPath)
-    func coreDataController(_ controller: CoreDataController, updatedContactAt indexPath: IndexPath)
+    func coreDataController(_ controller: CoreDataController, updatedContact contact: Contact, at indexPath: IndexPath)
     func coreDataController(_ controller: CoreDataController, deletedContactAt indexPath: IndexPath)
 }
 
@@ -44,6 +44,11 @@ class CoreDataController: NSObject {
         saveContext()
     }
     
+    func edit(contact: Contact, state: String?, city: String?, streetAddress1: String?, streetAddress2: String?, phoneNumber: String?, firstName: String?, lastName: String?, zipcode: String?) {
+        update(contact, contactID: contact.contactID, state: state, city: city, streetAddress1: streetAddress1, streetAddress2: streetAddress2, phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, zipcode: zipcode)
+        saveContext()
+    }
+    
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Contact")
         let departmentSort = NSSortDescriptor(key: "firstName", ascending: true)
@@ -78,6 +83,10 @@ class CoreDataController: NSObject {
     
     private func insertContactInContext(state: String?, city: String?, streetAddress1: String?, streetAddress2: String?, phoneNumber: String?, firstName: String?, lastName: String?, zipcode: String?, contactID: String) {
         let contact = NSEntityDescription.insertNewObject(forEntityName: "Contact", into: persistentContainer.viewContext) as! Contact
+        update(contact, contactID: contactID, state: state, city: city, streetAddress1: streetAddress1, streetAddress2: streetAddress2, phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, zipcode: zipcode)
+    }
+    
+    private func update(_ contact: Contact, contactID: String, state: String?, city: String?, streetAddress1: String?, streetAddress2: String?, phoneNumber: String?, firstName: String?, lastName: String?, zipcode: String?) {
         contact.contactID = contactID
         contact.state = state
         contact.city = city
@@ -110,7 +119,8 @@ extension CoreDataController: NSFetchedResultsControllerDelegate {
         case .move:
             return
         case .update:
-            delegate.coreDataController(self, updatedContactAt: newIndexPath)
+            guard let contact = anObject as? Contact else { fatalError() }
+            delegate.coreDataController(self, updatedContact: contact, at: newIndexPath)
         }
     }
 }
