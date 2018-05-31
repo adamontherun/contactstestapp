@@ -51,15 +51,6 @@ class CoreDataController: NSObject {
         saveContext()
     }
     
-    private func initializeFetchedResultsController() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: .Contact)
-        let departmentSort = NSSortDescriptor(key: .sortDescriptorFirstName, ascending: true)
-        request.sortDescriptors = [departmentSort]
-        
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<Contact>
-        fetchedResultsController?.delegate = self
-    }
-    
     func fetchContacts() {
         do {
             try fetchedResultsController?.performFetch()
@@ -70,6 +61,10 @@ class CoreDataController: NSObject {
     }
 
     // MARK: - Private
+    
+    private func initializeFetchedResultsController() {
+        fetchedResultsController = FetchedResultsControllerFactory.make(self, context: persistentContainer.viewContext)
+    }
     
     private func createContact(from json: [String: Any]) {
         guard let contactID = json[.contactID] as? String else { return }

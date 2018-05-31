@@ -28,6 +28,7 @@ extension String {
     // MARK: - CoreData SortDescriptor
     
     static let sortDescriptorFirstName = "firstName"
+    static let sortDescriptorLastName = "lastName"
     
     // MARK: - NotificationCenter UserInfo
     

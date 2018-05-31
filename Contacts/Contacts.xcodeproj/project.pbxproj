@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6670126720BF93280055D70B /* FetchedResultsControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6670126620BF93280055D70B /* FetchedResultsControllerFactory.swift */; };
 		66D726CB20BD2F81004372CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D726CA20BD2F81004372CD /* AppDelegate.swift */; };
 		66D726D020BD2F81004372CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D726CE20BD2F81004372CD /* Main.storyboard */; };
 		66D726D220BD2F81004372CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66D726D120BD2F81004372CD /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6670126620BF93280055D70B /* FetchedResultsControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerFactory.swift; sourceTree = "<group>"; };
 		66D726C720BD2F81004372CD /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66D726CA20BD2F81004372CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66D726CF20BD2F81004372CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				66D726F820BD3414004372CD /* Contacts */,
 				66D726EC20BD3094004372CD /* Model.xcdatamodeld */,
 				66D726F920BD351A004372CD /* CoreDataController.swift */,
+				6670126620BF93280055D70B /* FetchedResultsControllerFactory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				66D726F620BD33A4004372CD /* Contact+CoreDataProperties.swift in Sources */,
 				66D726FA20BD351A004372CD /* CoreDataController.swift in Sources */,
 				66D726CB20BD2F81004372CD /* AppDelegate.swift in Sources */,
+				6670126720BF93280055D70B /* FetchedResultsControllerFactory.swift in Sources */,
 				66D726EE20BD3094004372CD /* Model.xcdatamodeld in Sources */,
 				66D7270A20BE0A2A004372CD /* ContactsTableViewControllerDataSource.swift in Sources */,
 				66D7270020BDD6B1004372CD /* FirstUsageManager.swift in Sources */,
