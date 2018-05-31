@@ -11,11 +11,16 @@ class ContactsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
+        configureUI()
         addObservers()
     }
     
     // MARK: - UI Configuration
+    
+    private func configureUI() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        configureTableView()
+    }
     
     private func configureTableView() {
         tableView.dataSource = contactsTableViewControllerDataSource
@@ -52,7 +57,7 @@ class ContactsTableViewController: UITableViewController {
     // MARK: - TableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       performSegue(withIdentifier: .segueFromContactsToContactDetail, sender: self)
+        performSegue(withIdentifier: .segueFromContactsToContactDetail, sender: self)
     }
     
     // MARK: - Navigation

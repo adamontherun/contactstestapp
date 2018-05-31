@@ -14,7 +14,7 @@ class CoreDataController: NSObject {
     var fetchedResultsController: NSFetchedResultsController<Contact>?
     let persistentContainer = NSPersistentContainer(name: .Model)
     private weak var delegate: CoreDataControllerDelegate!
-
+    
     init(delegate: CoreDataControllerDelegate) {
         self.delegate = delegate
         
@@ -59,7 +59,7 @@ class CoreDataController: NSObject {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
     }
-
+    
     // MARK: - Private
     
     private func initializeFetchedResultsController() {
@@ -120,7 +120,7 @@ extension CoreDataController: NSFetchedResultsControllerDelegate {
             return
         case .update:
             guard let contact = anObject as? Contact,
-            let newIndexPath = newIndexPath else { fatalError() }
+                let newIndexPath = newIndexPath else { fatalError() }
             delegate.coreDataController(self, updatedContact: contact, at: newIndexPath)
         }
     }

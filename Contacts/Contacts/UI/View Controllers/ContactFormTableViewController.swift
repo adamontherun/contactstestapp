@@ -37,7 +37,6 @@ class ContactFormTableViewController: UITableViewController {
         super.viewDidLoad()
         registerKeyboardNotifications()
         configureUI()
-        configureTableView()
     }
     
     // MARK: - Table view data source
@@ -77,6 +76,7 @@ class ContactFormTableViewController: UITableViewController {
             navigationItem.title = .editContact
             fillTextFields(with: contact)
         }
+        configureTableView()
     }
     
     private func fillTextFields(with contact: Contact) {

@@ -53,6 +53,5 @@ extension String {
     // MARK: = Localized Strings
     static let addContact = NSLocalizedString("Add Contact", comment: "Title for the form view controller in the .new state")
     static let editContact = NSLocalizedString("Edit Contact", comment: "Title for the form view controller in the .update state")
-
 }
 

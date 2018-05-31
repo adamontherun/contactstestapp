@@ -1,11 +1,8 @@
-//😘 it is 5/30/18
-
 import UIKit
 
 class ContactDetailViewController: UIViewController {
     
     @IBOutlet var labels: [UILabel]!
-    
     
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
@@ -76,6 +73,7 @@ class ContactDetailViewController: UIViewController {
     }
     
     // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == .segueFromDetailToForm {
             guard let contactFormTableViewController = segue.destination as? ContactFormTableViewController else { fatalError("Expected a contact form tvc") }

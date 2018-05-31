@@ -9,7 +9,7 @@ enum ContactStoreUpdate {
 class ContactsStore {
     
     private lazy var coreDataController: CoreDataController = {
-       return CoreDataController(delegate: self)
+        return CoreDataController(delegate: self)
     }()
     
     var contacts: [Contact] {
@@ -45,8 +45,6 @@ class ContactsStore {
 }
 
 extension ContactsStore: CoreDataControllerDelegate {
-
-    
     
     func coreDataControllerDidInitializeStores(_ controller: CoreDataController) {
         let isFirstUsage = FirstUsageManager.checkIfAppsFirstUse()
