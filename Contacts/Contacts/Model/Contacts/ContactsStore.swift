@@ -8,17 +8,17 @@ enum ContactStoreUpdate {
     case deleted(indexPath: IndexPath)
 }
 
-// A repository of contacts for the app that also sends notifications when the store is updated.
+// A repository of contacts for the app. Use this to fetch the initial list of contacts, as well as to add, edit, or delete a contact. The store sends notifications when it is updated and the apporpriate view controller subscribe to the notifications to update themselves.
 
 class ContactsStore {
-    
-    private lazy var coreDataController: CoreDataController = {
-        return CoreDataController(delegate: self)
-    }()
     
     var contacts: [Contact] {
         return coreDataController.fetchedResultsController?.fetchedObjects ?? [Contact]()
     }
+    
+    private lazy var coreDataController: CoreDataController = {
+        return CoreDataController(delegate: self)
+    }()
     
     // MARK: - Public
     

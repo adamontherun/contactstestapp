@@ -9,12 +9,12 @@ protocol CoreDataControllerDelegate: class {
     func coreDataController(_ controller: CoreDataController, deletedContactAt indexPath: IndexPath)
 }
 
-/// Regulates the adding, editing and deleting of NSManagedObjects
+/// Manages the adding, editing and deleting of NSManagedObjects as instructed by the ContactStore.
 
 class CoreDataController: NSObject {
     
     var fetchedResultsController: NSFetchedResultsController<Contact>?
-    let persistentContainer = NSPersistentContainer(name: .Model)
+    private let persistentContainer = NSPersistentContainer(name: .Model)
     private weak var delegate: CoreDataControllerDelegate!
     
     init(delegate: CoreDataControllerDelegate) {

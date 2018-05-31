@@ -26,7 +26,6 @@ class ContactFormTableViewController: UITableViewController {
     private var activeTextField: UITextField?
     private var contactFormState = ContactFormState.undefined
     private var contactsStore: ContactsStore!
-    private let numberOfFields = 8
     
     // MARK: - Public
     
@@ -46,7 +45,7 @@ class ContactFormTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfFields
+        return textFields.count
     }
     
     // MARK: - Actions
