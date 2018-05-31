@@ -40,7 +40,7 @@ class ContactsStore {
     }
     
     private func fetchContacts() {
-        coreDataController.initializeFetchedResultsController()
+        coreDataController.fetchContacts()
     }
 }
 
@@ -54,7 +54,7 @@ extension ContactsStore: CoreDataControllerDelegate {
     }
     
     func coreDataControllerDidFetchContacts(_ controller: CoreDataController) {
-        //NotificationCenter.default.post(name: .contactsFetched, object: nil)
+        NotificationCenter.default.post(name: .contactsFetched, object: nil)
     }
     
     func coreDataController(_ controller: CoreDataController, addedContactAt indexPath: IndexPath) {

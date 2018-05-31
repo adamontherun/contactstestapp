@@ -12,22 +12,18 @@ protocol CoreDataControllerDelegate: class {
 class CoreDataController: NSObject {
     
     var fetchedResultsController: NSFetchedResultsController<Contact>?
-
-    private var persistentContainer: NSPersistentContainer!
+    let persistentContainer = NSPersistentContainer(name: "Model")
     private weak var delegate: CoreDataControllerDelegate!
-    private var hasPerformedInitialFetch = false
 
     init(delegate: CoreDataControllerDelegate) {
         self.delegate = delegate
-        let persistentContainer = NSPersistentContainer(name: "Model")
+        
         super.init()
         persistentContainer.loadPersistentStores() { [weak self](description, error) in
             guard let this = self else { return }
             if let error = error {
                 fatalError("Failed to load Core Data stack: \(error)")
             }
-            //print(persistentContainer.persistentStoreCoordinator.persistentStores.first!.url!)
-            this.persistentContainer = persistentContainer
             this.initializeFetchedResultsController()
             DispatchQueue.main.async {
                 this.delegate.coreDataControllerDidInitializeStores(this)
@@ -55,18 +51,19 @@ class CoreDataController: NSObject {
         saveContext()
     }
     
-    func initializeFetchedResultsController() {
+    private func initializeFetchedResultsController() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Contact")
         let departmentSort = NSSortDescriptor(key: "firstName", ascending: true)
         request.sortDescriptors = [departmentSort]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<Contact>
-        fetchedResultsController!.delegate = self
-        
+        fetchedResultsController?.delegate = self
+    }
+    
+    func fetchContacts() {
         do {
             try fetchedResultsController?.performFetch()
             delegate.coreDataControllerDidFetchContacts(self)
-            hasPerformedInitialFetch = true
         } catch {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
@@ -117,7 +114,6 @@ class CoreDataController: NSObject {
 extension CoreDataController: NSFetchedResultsControllerDelegate {
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {        
-        if !hasPerformedInitialFetch { return }
         switch type {
         case .insert:
             guard let newIndexPath = newIndexPath else { fatalError() }
